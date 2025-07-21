@@ -2,25 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OP AI BOT PREDICTION</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+    }
+    .period {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .prediction {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .telegram-button {
+      display: inline-flex;
+      align-items: center;
+      background-color: #0088cc;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: background 0.3s;
+    }
+    .telegram-button:hover {
+      background-color: #006699;
+    }
+    .telegram-button img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>OP AI BOT PREDICTION</h1>
-    <p class="subheading">Trusted AI for Color Trading Signals</p>
-
-    <div class="period-box">
-      <p>Period: <span id="period">#1000</span></p>
-      <p>Prediction: <span id="prediction">--</span></p>
-    </div>
-
-    <a href="https://t.me/TcDailyEarners" target="_blank" class="telegram-icon">
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram" />
+    <div class="period" id="period">Period #1000</div>
+    <div class="prediction" id="prediction">Big</div>
+    <a class="telegram-button" href="https://t.me/TcDailyEarners" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
+      Join Telegram
     </a>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    let period = 1000;
+
+    function update() {
+      period++;
+      const prediction = Math.random() > 0.5 ? 'Big' : 'Small';
+      document.getElementById('period').innerText = `Period #${period}`;
+      document.getElementById('prediction').innerText = prediction;
+    }
+
+    // Initial display
+    update();
+    // Update every 30 seconds
+    setInterval(update, 30000);
+  </script>
 </body>
 </html>
